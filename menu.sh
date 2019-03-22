@@ -88,7 +88,7 @@ function registar
         case $inserido in
         
             "1")
-            
+                
                 ;;
             "2")
             
@@ -136,7 +136,6 @@ function editar
             
                 break
                 ;;
-                
             *)
             
                 echo -e "\n\tOpção inválida!\n"
@@ -153,6 +152,7 @@ function visualizar
         inserido=$?
             
         case $inserido in
+
             "1")
                 
                 ;;
@@ -198,12 +198,10 @@ function relatorios
             "4")
                 
                 ;;
-            
             "0")
             
                 break
                 ;;
-            
             *)
                 
                 echo -e "\n\tOpção inválida!\n"
@@ -220,23 +218,24 @@ function gestao
         inserido=$?
         
         case $inserido in
-        "1")
-            ;;
-        
-        "2")
-            ;;
-        
-        "3")
-            ;;
-        
-        "0")
-            break
-            ;;
-        
-        *)
-            echo -e "\n\tOpção inválida!\n"
-            ;;
-            
+
+            "1")
+
+                ;;
+            "2")
+
+                ;;
+            "3")
+
+                ;;    
+            "0")
+
+                break
+                ;;
+            *)
+                
+                echo -e "\n\tOpção inválida!\n"
+                ;;
         esac
     done
 }
@@ -249,6 +248,7 @@ function main
         inserido=$?
 
         case $inserido in
+
             "1")
             
                 registar
