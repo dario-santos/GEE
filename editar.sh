@@ -60,7 +60,7 @@ function editar_universidade
                 ;;
             "2")
 
-                echo -e "\nLista de professores de Destino:\n"
+                echo -e "\nLista de Universidades de Destino:\n"
                 escolher_id $fUniDest 
                 idUniDest=$?
 
