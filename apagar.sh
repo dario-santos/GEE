@@ -113,7 +113,7 @@ function apagar_professor
 function apagar_aluno
 {
     fAluno="./BD/Aluno.txt"
-
+    fInscrito="./BD/Inscrito.txt"
     echo -e "\n--Apagar Aluno--\n"
     echo -e "\nLista de Alunos:\n"
     escolher_id $fAluno
@@ -122,11 +122,14 @@ function apagar_aluno
     grep -v "^${idAluno}" $fAluno > "teste.txt"
     mv "teste.txt" $fAluno
 
+    grep -v "^${idAluno}" $fInscrito > "teste.txt"
+    mv "teste.txt" $fInscrito
 }
 
 function apagar_disciplina
 {
     fDisciplina="./BD/Disciplina.txt"
+    fInscrito="./BD/Inscrito.txt"
 
     echo -e "\n--Apagar Disciplina--\n"
     echo -e "\nLista de Disciplinas:\n"
@@ -135,4 +138,7 @@ function apagar_disciplina
 
     grep -v "^${idDisciplina}" $fDisciplina > "teste.txt"
     mv "teste.txt" $fDisciplina
+
+    grep -v "${idDisciplina}$" $fInscrito > "teste.txt"
+    mv "teste.txt" $fInscrito
 }
