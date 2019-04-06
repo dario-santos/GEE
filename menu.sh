@@ -19,7 +19,7 @@ function menu_registar
     echo -e "\n--Registo--\n"
     echo -e "\t1 - Universidade"
     echo -e "\t2 - Professor"
-    echo -e "\t3 - Estudante"
+    echo -e "\t3 - Aluno"
     echo -e "\t4 - Disciplina\n"
     echo -e "\t0 - Menu Principal"
     echo -n "Introduza a opção: "
@@ -32,8 +32,9 @@ function menu_editar
     echo -e "\n--Edição--\n"
     echo -e "\t1 - Universidade"
     echo -e "\t2 - Professor"
-    echo -e "\t3 - Estudante"
+    echo -e "\t3 - Aluno"
     echo -e "\t4 - Disciplina\n"
+    echo -e "\t5 - Inscrição"
     echo -e "\t0 - Menu Principal"
     echo -n "Introduza a opção: "
     read aux
@@ -45,7 +46,7 @@ function menu_visualizar
     echo -e "\n--Visualizar Dados--\n"
     echo -e "\t1 - Universidade"
     echo -e "\t2 - Professor"
-    echo -e "\t3 - Estudante"
+    echo -e "\t3 - Aluno"
     echo -e "\t4 - Disciplina\n"
     echo -e "\t0 - Menu Principal"
     echo -n "Introduza a opção: "
@@ -58,7 +59,7 @@ function menu_relatorios
     echo -e "\n--Relatórios--\n"
     echo -e "\t1 - Listar Universidade"
     echo -e "\t2 - Listar Professor"
-    echo -e "\t3 - Listar Estudante"
+    echo -e "\t3 - Listar Aluno"
     echo -e "\t4 - Listar Disciplina\n"
     echo -e "\t0 - Menu Principal"
     echo -n "Introduza a opção: "
@@ -88,7 +89,7 @@ function registar
         case $inserido in
         
             "1")
-            
+                
                 ;;
             "2")
             
@@ -136,7 +137,6 @@ function editar
             
                 break
                 ;;
-                
             *)
             
                 echo -e "\n\tOpção inválida!\n"
@@ -153,6 +153,7 @@ function visualizar
         inserido=$?
             
         case $inserido in
+
             "1")
                 
                 ;;
@@ -198,12 +199,10 @@ function relatorios
             "4")
                 
                 ;;
-            
             "0")
             
                 break
                 ;;
-            
             *)
                 
                 echo -e "\n\tOpção inválida!\n"
@@ -220,23 +219,24 @@ function gestao
         inserido=$?
         
         case $inserido in
-        "1")
-            ;;
-        
-        "2")
-            ;;
-        
-        "3")
-            ;;
-        
-        "0")
-            break
-            ;;
-        
-        *)
-            echo -e "\n\tOpção inválida!\n"
-            ;;
-            
+
+            "1")
+
+                ;;
+            "2")
+
+                ;;
+            "3")
+
+                ;;    
+            "0")
+
+                break
+                ;;
+            *)
+                
+                echo -e "\n\tOpção inválida!\n"
+                ;;
         esac
     done
 }
@@ -249,6 +249,7 @@ function main
         inserido=$?
 
         case $inserido in
+
             "1")
             
                 registar
