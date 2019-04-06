@@ -44,10 +44,11 @@ function menu_editar
 function menu_visualizar
 {
     echo -e "\n--Visualizar Dados--\n"
-    echo -e "\t1 - Universidade"
-    echo -e "\t2 - Professor"
-    echo -e "\t3 - Aluno"
-    echo -e "\t4 - Disciplina\n"
+    echo -e "\t1 - Universidades"
+    echo -e "\t2 - Professores"
+    echo -e "\t3 - Alunos"
+    echo -e "\t4 - Disciplinas\n"
+    echo -e "\t5 - Inscrições"
     echo -e "\t0 - Menu Principal"
     echo -n "Introduza a opção: "
     read aux
@@ -57,15 +58,17 @@ function menu_visualizar
 function menu_relatorios
 {
     echo -e "\n--Relatórios--\n"
-    echo -e "\t1 - Listar Universidade"
-    echo -e "\t2 - Listar Professor"
-    echo -e "\t3 - Listar Aluno"
-    echo -e "\t4 - Listar Disciplina\n"
-    echo -e "\t0 - Menu Principal"
+    echo -e "\t1 - XXXXX"
+    echo -e "\t2 - XXXXX"
+    echo -e "\t3 - XXXXX"
+    echo -e "\t4 - XXXXX\n"
+    echo -e "\t0 - XXXXX"
     echo -n "Introduza a opção: "
     read aux
     return $aux 
 }
+
+
 
 function menu_gestao
 {
