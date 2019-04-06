@@ -6,14 +6,14 @@ Projeto para a unidade curricular Sistemas Operativos
 
 Aluno(**idAluno**, nome, idUniDest, idUniOrig, idRespDest, idRespOrig)
 
-Disciplina(**idDisciplina**, nome, ano, semestre, idRespDest)
+Disciplina(**idDisciplina**, nome, ano, semestre, idRespDest, idUniDest)
 
 Inscrito(**idAluno, idDisciplina**)
 
-UniversidadeOrigem(**idUniOrig**, nome)
+UniOrig(**idUniOrig**, nome)
 
-UniversidadeDestino(**idUniDest**, nome)
+UniDest(**idUniDest**, nome)
 
-ResponsavelOrigem(**idRespOrig**, nome)
+RespOrig(**idRespOrig**, nome, idUniOrig)
 
-ResponsavelDestino(**idRespDest**, nome)
+RespDest(**idRespDest**, nome, idUniDest)
