@@ -130,5 +130,3 @@ function visualizar_inscricao
     echo -e "\nLista de disciplinas inscritas (id ALuno:id Disciplina)"                
     grep "^${idAluno}" $fInscrito
 }
-
-visualizar_professores

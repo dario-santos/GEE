@@ -1,4 +1,2 @@
-1:UNI_A
-2:UNI_B
-3:UNI_C
-4:UNI_D
+1:POL
+3:BEL
