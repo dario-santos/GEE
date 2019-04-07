@@ -68,7 +68,23 @@ function visualizar_professores
         case $aux in 
             "1")
                 echo -e "\nLista de Professores de Origem:\n" 
-                cat $fRespOrig
+                #cat $fRespOrig
+                
+                lista_de_ids=$(cut -d: -f1 ${fRespOrig})
+
+                
+                for i in $lista_de_ids
+                do
+                    linha=$(grep ^$i ${fRespOrig})
+                    echo $linha
+                    IFS=":" read -r idRespOrig nomeRespOrig idUniOrig<<< "$linha"
+                    echo "$idUniOrig"
+
+                    grep $idUniOrig $fUniOrig
+
+                    echo "$idRespOrig:$nomeRespOrig:$nomeUniOrig"
+
+                done
                 return
                 ;;
             "2")
@@ -114,3 +130,5 @@ function visualizar_inscricao
     echo -e "\nLista de disciplinas inscritas (id ALuno:id Disciplina)"                
     grep "^${idAluno}" $fInscrito
 }
+
+visualizar_professores

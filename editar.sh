@@ -60,7 +60,7 @@ function editar_universidade
                 ;;
             "2")
 
-                echo -e "\nLista de professores de Destino:\n"
+                echo -e "\nLista de Universidades de Destino:\n"
                 escolher_id $fUniDest 
                 idUniDest=$?
 
@@ -79,7 +79,7 @@ function editar_universidade
                 ;;
             *)
 
-                echo -e "\ntOpção inválida!\n"
+                echo -e "\nOpção inválida!\n"
         esac         
     done
 }
@@ -149,7 +149,7 @@ function editar_professor
                 ;;
             *)
 
-                echo -e "\ntOpção inválida!\n"
+                echo -e "\nOpção inválida!\n"
         esac         
     done
 }
@@ -277,26 +277,42 @@ function editar_inscricao
                 escolher_id $fAluno 
                 idAluno=$?
 
-                #Disciplinas em que esse aluno está inscrito
-                echo -e "\nLista de disciplinas inscritas (id ALuno:id Disciplina)"
                 
-                grep "^${idAluno}" $fInscrito > "tmp.txt"
-
+                echo -e "\nLista de disciplinas inscritas"
                 echo -e "Escolhe o id da disciplina que pretende desinscrever: \n"
-                escolher_id "tmp.txt"
+                escolher_id $fDisciplina
                 idDisciplina=$?
 
+                grep -v "^${idAluno}:${idDisciplina}" $fInscrito > "teste.txt"
+                mv "teste.txt" $fInscrito
 
                 return
                 ;;
             "2")
+                echo -e "\nLista de Alunos:\n" 
+                escolher_id $fAluno 
+                idAluno=$?
+
+                
+
+                echo -e "\nLista de disciplinas:\n"
+                echo -e "Escolhe o id da disciplina que pretende inscrever: \n"
+                escolher_id $fDisciplina
+                idDisciplina=$?
+
+                if [ $(grep "^${idAluno}:${idDisciplina}" $fInscrito) ]
+                then
+                    echo "O aluno já está inscrito nessa disciplina"
+                else
+                    echo "${idAluno}:${idDisciplina}" >> $fInscrito
+                    sort -n $fInscrito > "tmp.txt"
+                    mv "tmp.txt" $fInscrito
+                fi
                 return
                 ;;
             *)
 
-                echo -e "\ntOpção inválida!\n"
+                echo -e "\nOpção inválida!\n"
         esac         
     done
 }
-
-editar_inscricao

@@ -22,6 +22,7 @@ function relatorio_aluno {
 	linha5=`grep $idRespDest ./BD/RespOrig.txt`
 	IFS=":" read -r var3 nomeRespOrigem <<< "$linha5"
 
+	echo "_${nomeUniDestino}_"
 	echo "O aluno ${nome} com o id ${idAluno}"
 	echo "vai para a ${nomeUniDestino} vindo da ${nomeUniOrigem}."
 	echo "O responsavel de origem é ${nomeRespOrigem} e o responsavel de destino é ${nomeRespDestino}."
@@ -74,4 +75,4 @@ function relatorio_disciplina {
 }
 
 
-relatorio_disciplinascomaluno
+relatorio_aluno
