@@ -87,12 +87,8 @@ function apagar_professor
                 escolher_id $fRespOrig 
                 idRespOrig=$?
 
-                gawk 'NR==FNR {a[$1][$2]++; next} $1 in a {for (x in a[$1]) print $0, x}' OFS="\t" $fRespOrig $fAluno
-
                 grep -v "^${idRespOrig}" $fRespOrig > "teste.txt"
                 mv "teste.txt" $fRespOrig
-
-
                 return
                 ;;
 
@@ -103,7 +99,6 @@ function apagar_professor
                 
                 grep -v "^${idRespDest}" $fRespDest > "teste.txt"
                 mv "teste.txt" $fRespDest
-
                 return
                 ;;
             *)
