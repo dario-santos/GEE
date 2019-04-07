@@ -1,2 +1,3 @@
-1:BEIRA INTERIOR
-3:LISBOA
+1:UBI
+2:Porto
+3:Lisboa

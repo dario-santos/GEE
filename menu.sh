@@ -27,6 +27,7 @@ function escolher_id
 
 #Relatório
 #-----------------------------------------------------------
+
 function relatorio_aluno {
 	echo -e "\n--Relatório do Aluno--\n"
 	echo -n "Introduza o id do aluno: "
@@ -49,10 +50,9 @@ function relatorio_aluno {
 	linha5=`awk -F ":" '{if ($1 == '$idRespOrig') print $0;}' ./BD/RespOrig.txt`
 	IFS=":" read -r var3 nomeRespOrigem var5 <<< "$linha5"
 
-	echo "_${nomeUniDestino}_"
 	echo "O aluno ${nome} com o id ${idAluno}"
 	echo "vai para a ${nomeUniDestino} vindo da ${nomeUniOrigem}."
-	echo "O responsavel de origem é ${nomeRespOrigem} e o responsavel de destino é ${nomeRespDestino}."
+	echo "O responsavel de origem é o ${nomeRespOrigem} e o responsavel de destino é o ${nomeRespDestino}."
      
 }
 
@@ -69,25 +69,24 @@ function relatorio_disciplinascomalunos {
 	
 }
     
-
 function relatorio_universidade {
-    	echo -e "\n--Relatório da Universidade--\n"
+    echo -e "\n--Relatório da Universidade--\n"
 	echo -n "Introduza o id da Universidade de Origem: "
 	read var
-	
+	echo ""
 	echo "A universidade de origem tem os seguintes alunos:"		
 	awk -F ":" '{if ($4 == '$var') print $2;}' ./BD/Aluno.txt
 	
 	echo -n "Introduza o id da Universidade de Destino: "
 	read var
-	
+	echo ""
 	echo "A universidade de destino tem os seguintes alunos:"		
 	awk -F ":" '{if ($3 == '$var') print $2;}' ./BD/Aluno.txt
 	
 }
 
 function relatorio_disciplina {
-    	echo -e "\n--Relatório da Disciplina--\n"
+    echo -e "\n--Relatório da Disciplina--\n"
 	echo -n "Introduza o id da disciplina: "	
 	read var
 	linha=`awk -F ":" '{if ($1 == '$var') print $0;}' ./BD/Disciplina.txt`
@@ -102,9 +101,8 @@ function relatorio_disciplina {
 	
 	
 	
-	echo 'A disciplina denominada' $nome 'foi criada no ano de' $ano 'e é lecionada no' $semestre 'semestre, na Universidade' $nomeUnidDestino 'e o responsavel é o professor' $nomeRespDestino
+	echo 'A disciplina denominada' $nome 'e do ano ' $ano 'e é lecionada no' $semestre 'semestre, na Universidade' $nomeUnidDestino 'e o responsavel é o professor' $nomeRespDestino
 }
-
 
 #-----------------------------------------------------------
 
@@ -342,10 +340,8 @@ function visualizar_inscricao
     grep "^${idAluno}" $fInscrito
 }
 
-
 #-----------------------------------------------------------
-
-
+1
 
 #Editar
 #-----------------------------------------------------------
