@@ -79,7 +79,7 @@ function editar_universidade
                 ;;
             *)
 
-                echo -e "\ntOpção inválida!\n"
+                echo -e "\nOpção inválida!\n"
         esac         
     done
 }
@@ -149,7 +149,7 @@ function editar_professor
                 ;;
             *)
 
-                echo -e "\ntOpção inválida!\n"
+                echo -e "\nOpção inválida!\n"
         esac         
     done
 }
@@ -312,9 +312,7 @@ function editar_inscricao
                 ;;
             *)
 
-                echo -e "\ntOpção inválida!\n"
+                echo -e "\nOpção inválida!\n"
         esac         
     done
 }
-
-editar_inscricao

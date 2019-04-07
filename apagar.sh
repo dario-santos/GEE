@@ -72,7 +72,7 @@ function apagar_professor
 {
     fRespOrig="./BD/RespOrig.txt"
     fRespDest="./BD/RespDest.txt"
-
+    fAluno="./BD/Aluno.txt"
     while :
     do 
         echo -e "\n--Apagar Professor--\n"
@@ -87,8 +87,11 @@ function apagar_professor
                 escolher_id $fRespOrig 
                 idRespOrig=$?
 
+                gawk 'NR==FNR {a[$1][$2]++; next} $1 in a {for (x in a[$1]) print $0, x}' OFS="\t" $fRespOrig $fAluno
+
                 grep -v "^${idRespOrig}" $fRespOrig > "teste.txt"
                 mv "teste.txt" $fRespOrig
+
 
                 return
                 ;;
@@ -109,6 +112,8 @@ function apagar_professor
         esac         
     done
 }
+
+apagar_professor
 
 function apagar_aluno
 {
