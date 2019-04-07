@@ -4,7 +4,7 @@ function relatorio_aluno {
 	read var
 	echo $var
 
-	linha=`grep $var ./BD/Aluno.txt`
+	linha=`awk -F ":" '{if ($1 == '$var') print $0;}' ./BD/Aluno.txt`
 	echo $linha
 	
 	IFS=":" read -r idAluno nome idUniDest idUniOrig idRespDest idRespOrig <<< "$linha"
