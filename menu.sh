@@ -25,6 +25,90 @@ function escolher_id
     return $id    
 }
 
+#Relatório
+#-----------------------------------------------------------
+function relatorio_aluno {
+	echo -e "\n--Relatório do Aluno--\n"
+	echo -n "Introduza o id do aluno: "
+	read var
+	echo $var
+
+	linha=`awk -F ":" '{if ($1 == '$var') print $0;}' ./BD/Aluno.txt`
+	
+	IFS=":" read -r idAluno nome idUniDest idUniOrig idRespDest idRespOrig <<< "$linha"
+
+	linha2=`grep $idUniDest ./BD/UniDest.txt`
+	IFS=":" read -r var1 nomeUniDestino<<< "$linha2"
+
+	linha3=`grep $idUniOrig ./BD/UniOrig.txt`
+	IFS=":" read -r var2 nomeUniOrigem <<< "$linha3"
+
+	linha4=`awk -F ":" '{if ($1 == '$idRespDest') print $0;}' ./BD/RespDest.txt`
+	IFS=":" read -r var3 nomeRespDestino var4 <<< "$linha4"
+
+	linha5=`awk -F ":" '{if ($1 == '$idRespOrig') print $0;}' ./BD/RespOrig.txt`
+	IFS=":" read -r var3 nomeRespOrigem var5 <<< "$linha5"
+
+	echo "_${nomeUniDestino}_"
+	echo "O aluno ${nome} com o id ${idAluno}"
+	echo "vai para a ${nomeUniDestino} vindo da ${nomeUniOrigem}."
+	echo "O responsavel de origem é ${nomeRespOrigem} e o responsavel de destino é ${nomeRespDestino}."
+     
+}
+
+function relatorio_disciplinascomalunos {
+	echo -e "\n--Relatório da Disciplina--\n"
+	echo -n "Introduza o id da Disciplina: "
+	read var
+	linha5=`awk -F ":" '{if ($1 == '$var') print $0;}' ./BD/Disciplina.txt`
+	IFS=":" read -r idDisciplina nome var2 var3 idRespDest var4 <<< "$linha5"
+
+	echo "A disciplina de ${nome} tem os seguintes alunos"
+	awk -F ":" '{if ($5 == '$idRespDest') print $2;}' ./BD/Aluno.txt
+	
+	
+}
+    
+
+function relatorio_universidade {
+    	echo -e "\n--Relatório da Universidade--\n"
+	echo -n "Introduza o id da Universidade de Origem: "
+	read var
+	
+	echo "A universidade de origem tem os seguintes alunos:"		
+	awk -F ":" '{if ($4 == '$var') print $2;}' ./BD/Aluno.txt
+	
+	echo -n "Introduza o id da Universidade de Destino: "
+	read var
+	
+	echo "A universidade de destino tem os seguintes alunos:"		
+	awk -F ":" '{if ($3 == '$var') print $2;}' ./BD/Aluno.txt
+	
+}
+
+function relatorio_disciplina {
+    	echo -e "\n--Relatório da Disciplina--\n"
+	echo -n "Introduza o id da disciplina: "	
+	read var
+	linha=`awk -F ":" '{if ($1 == '$var') print $0;}' ./BD/Disciplina.txt`
+	IFS=":" read -r idDisciplina nome ano semestre idRespDest idUniDest <<< "$linha"
+	
+	linha1=`awk -F ":" '{if ($1 == '$idRespDest') print $0;}' ./BD/RespDest.txt`
+	IFS=":" read -r var3 nomeRespDestino idUniDest <<< "$linha1"
+
+	linha2=`grep $idUniDest ./BD/UniDest.txt`
+	IFS=":" read -r var1 nomeUniDestino<<< "$linha2"
+
+	
+	
+	
+	echo 'A disciplina denominada' $nome 'foi criada no ano de' $ano 'e é lecionada no' $semestre 'semestre, na Universidade' $nomeUnidDestino 'e o responsavel é o professor' $nomeRespDestino
+}
+
+
+#-----------------------------------------------------------
+
+
 #Apagar
 #-----------------------------------------------------------
 
@@ -946,11 +1030,11 @@ function menu_visualizar
 function menu_relatorios
 {
     echo -e "\n--Relatórios--\n"
-    echo -e "\t1 - XXXXX"
-    echo -e "\t2 - XXXXX"
-    echo -e "\t3 - XXXXX"
-    echo -e "\t4 - XXXXX\n"
-    echo -e "\t0 - XXXXX"
+    echo -e "\t1 - Aluno"
+    echo -e "\t2 - Alunos na Disciplina"
+    echo -e "\t3 - Universidade"
+    echo -e "\t4 - Disciplina\n"
+    echo -e "\t0 - Menu Principal"
     echo -n "Introduza a opção: "
     read aux
     return $aux 
@@ -1093,16 +1177,16 @@ function relatorios
         case $inserido in
             
             "1")
-        
+                relatorio_aluno
                 ;;
             "2")
-                
+                relatorio_disciplinascomalunos
                 ;;
             "3")
-                
+                relatorio_universidade
                 ;;
             "4")
-                
+                relatorio_disciplina
                 ;;
             "0")
             
